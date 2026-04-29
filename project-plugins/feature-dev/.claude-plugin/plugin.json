@@ -1,0 +1,8 @@
+{
+  "name": "feature-dev",
+  "version": "1.1.0",
+  "description": "Streamlined feature development workflow for interview POC. Trimmed from original 7-phase to 4-phase for speed: Discovery → Architecture → Implementation → Quick Review. Use when building individual features after scaffold is ready.",
+  "author": {
+    "name": "Sid Bidasaria (original, Anthropic), prabh (trimmed for speed)"
+  }
+}

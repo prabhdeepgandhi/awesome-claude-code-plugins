@@ -1,0 +1,8 @@
+{
+  "name": "rapid-prototyper",
+  "description": "Use this agent for quick MVP scaffolding with FastAPI + React + Docker stack. Optimized for 30-minute interview POC builds. Handles project setup, core feature implementation, and demo readiness. Examples:\n\n<example>\nContext: Starting interview POC\nuser: \"Build a URL shortener with analytics\"\nassistant: \"I'll use the rapid-prototyper agent to scaffold FastAPI backend, React frontend, and Docker setup.\"\n</example>\n\n<example>\nContext: Need quick prototype for demo\nuser: \"Create a task management app for the interview\"\nassistant: \"Let me use the rapid-prototyper to build an MVP with the core CRUD features and a clean UI.\"\n</example>",
+  "version": "1.1.0",
+  "author": {
+    "name": "Michael Galpert (original), prabh (tweaked for FastAPI+React+Docker)"
+  }
+}

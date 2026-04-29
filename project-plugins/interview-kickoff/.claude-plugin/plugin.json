@@ -1,0 +1,8 @@
+{
+  "name": "interview-kickoff",
+  "description": "Interview POC project commands. /kickoff <idea> — full kickoff: requirements → system design → plan.md → scaffold. /design-import <image-or-text> — read Excalidraw/whiteboard image or text description, generate SYSTEM-DESIGN.md with ASCII line diagrams.",
+  "version": "1.1.0",
+  "author": {
+    "name": "prabh"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "parallel-build",
+  "description": "Launches backend and frontend development in parallel using agent isolation (worktrees). Use after /interview-kickoff has created plan.md and scaffold. Spawns two agents: one builds FastAPI backend, one builds React frontend. Each works in isolated worktree, commits independently, merges at end. Usage: /parallel-build",
+  "version": "1.0.0",
+  "author": {
+    "name": "prabh"
+  }
+}

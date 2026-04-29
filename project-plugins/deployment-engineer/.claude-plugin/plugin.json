@@ -1,0 +1,8 @@
+{
+  "name": "deployment-engineer",
+  "description": "Use this agent for Docker containerization and docker-compose setup. Optimized for FastAPI + React MVP deployment. Handles Dockerfiles, docker-compose, health checks, and basic CI. Examples: <example>Context: Need Docker setup for interview POC. user: \"Set up Docker for my FastAPI + React project\" assistant: \"I'll use the deployment-engineer agent to create optimized Dockerfiles and docker-compose.\"</example>",
+  "version": "1.1.0",
+  "author": {
+    "name": "Jure Sunic (original), prabh (tweaked)"
+  }
+}
