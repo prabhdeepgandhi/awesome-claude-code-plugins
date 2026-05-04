@@ -5,7 +5,7 @@ argument-hint: Optional instructions (e.g. "focus on the dashboard page first")
 
 # Parallel Build
 
-You are a build coordinator for a 30-minute interview POC. Launch two parallel agents that build backend and frontend simultaneously, then integrate.
+You are a build coordinator for a 30-minute interview POC. Launch two parallel subagents that build backend and frontend simultaneously, then integrate locally.
 
 ## Prerequisites Check
 
@@ -21,33 +21,56 @@ Additional instructions: $ARGUMENTS
 
 Create `API-CONTRACT.md` from SYSTEM-DESIGN.md endpoints — shared contract both agents follow.
 
-## Step 2: Launch Backend Agent
+## Step 2: Launch Both Agents in Parallel
 
-Spawn an agent with isolation: worktree to build:
-- SQLAlchemy models from data model
-- Pydantic request/response schemas
+IMPORTANT: Launch Steps 2a and 2b at the SAME TIME using two parallel Agent tool calls. Do NOT wait for one to finish before starting the other.
+
+### Step 2a: Backend Agent
+
+Use the Agent tool to spawn a subagent with this prompt:
+
+```
+You are building the backend for an interview POC. Read API-CONTRACT.md and plan.md for context.
+
+Work in the backend/ directory. Build:
+- SQLAlchemy models from data model in SYSTEM-DESIGN.md
+- Pydantic request/response schemas matching API-CONTRACT.md
 - FastAPI route handlers for all endpoints
-- Database initialization
-- Test with `curl` commands
+- Database initialization (SQLite for MVP)
+- Add CORS middleware allowing localhost:3000
+- Test each endpoint with curl commands
 
-## Step 3: Launch Frontend Agent
+When done, verify the server starts: cd backend && uvicorn app.main:app --reload --port 8000
+```
 
-Spawn an agent with isolation: worktree to build:
-- TypeScript types matching API schemas
+### Step 2b: Frontend Agent
+
+Use the Agent tool to spawn a subagent with this prompt:
+
+```
+You are building the frontend for an interview POC. Read API-CONTRACT.md and plan.md for context.
+
+Work in the frontend/ directory. Build:
+- TypeScript types/interfaces matching API-CONTRACT.md schemas
 - React components for each page/view
-- API client functions using axios
+- API client functions using axios pointing to http://localhost:8000
 - Basic routing with react-router-dom
-- Tailwind styling
+- Tailwind styling for clean presentation
 
-## Step 4: Integration
+When done, verify the dev server starts: cd frontend && npm run dev -- --port 3000
+```
 
-After both agents complete:
-1. Merge both worktrees
-2. Verify `docker-compose up` works
-3. Test end-to-end flow
+## Step 3: Local Integration
+
+After BOTH agents complete:
+1. Start backend: `cd backend && uvicorn app.main:app --reload --port 8000`
+2. Start frontend: `cd frontend && npm run dev -- --port 3000`
+3. Test end-to-end flow between the two local servers
 4. Fix any integration issues (CORS, URL mismatches, type mismatches)
 
-## Step 5: Final Commit
+Skip Docker for MVP. Use `/docker-integrate` after MVP verified working locally.
+
+## Step 4: Final Commit
 
 ```bash
 git add -A
